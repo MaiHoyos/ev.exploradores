@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Autoevaluación – Exploradores de Zython</title>
+    <title>Evaluaciones – Exploradores de Zython</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -56,8 +56,8 @@
 <body class="text-slate-50 relative overflow-x-hidden">
     <div class="stars" id="stars"></div>
 
-    <div class="relative z-10 max-w-4xl mx-auto px-4 py-6 md:py-10 space-y-6">
-        <!-- HEADER -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-6 md:py-10 space-y-8">
+        <!-- HEADER GENERAL -->
         <header class="glass-card border-cyan-400/60 p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
             <button onclick="volverAMisiones()"
                 class="px-4 py-2 rounded-full bg-slate-900/80 border border-cyan-300 text-cyan-200 text-xs md:text-sm font-semibold hover:scale-105 transition">
@@ -68,14 +68,14 @@
                     Exploradores del Espacio · Zython
                 </p>
                 <h1 class="title-font text-xl md:text-3xl text-cyan-300 mt-1">
-                    Autoevaluación del Explorador
+                    Evaluaciones finales de Zython
                 </h1>
                 <p class="text-[0.75rem] md:text-sm text-slate-300 mt-1">
-                    Piensa en cómo trabajaste durante las misiones con tu RoverBot.
+                    Primero piensa en tu propio trabajo y luego en cómo funcionó tu equipo.
                 </p>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-xs text-slate-300 mb-1">Progreso de reflexión</span>
+                <span class="text-xs text-slate-300 mb-1">Progreso de autoevaluación</span>
                 <div class="w-28 bg-slate-800/80 rounded-full h-2 overflow-hidden">
                     <div id="progress-bar" class="h-2 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400" style="width: 0%;"></div>
                 </div>
@@ -83,483 +83,750 @@
             </div>
         </header>
 
-        <!-- FORM -->
-        <main class="glass-card p-5 md:p-8 space-y-6">
-            <form id="selfEvalForm" class="space-y-6">
-                <!-- DATOS -->
-                <section class="space-y-3">
-                    <h2 class="text-sm md:text-base font-semibold text-cyan-300 uppercase tracking-[0.18em]">
-                        Datos del explorador
-                    </h2>
-                    <div class="grid md:grid-cols-3 gap-3 text-xs md:text-sm">
-                        <label class="flex flex-col gap-1">
-                            Nombre
-                            <input name="nombre" required
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
-                        </label>
-                        <label class="flex flex-col gap-1">
-                            Equipo
-                            <input name="equipo"
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
-                        </label>
-                        <label class="flex flex-col gap-1">
-                            Fecha
-                            <input type="date" name="fecha"
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
-                        </label>
-                    </div>
-                </section>
+        <!-- AUTOEVALUACIÓN -->
+        <main class="space-y-8">
+            <section id="auto-eval" class="glass-card p-5 md:p-8 space-y-6">
+                <h2 class="title-font text-lg md:text-2xl text-emerald-300 text-center tracking-[0.18em]">
+                    Autoevaluación del Explorador
+                </h2>
 
-                <!-- ESCALA A -->
-                <section class="space-y-4">
-                    <div class="flex items-center justify-between gap-3">
-                        <h2 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
-                            A. Mi trabajo y mi aprendizaje
-                        </h2>
-                        <div class="text-[0.65rem] md:text-xs text-slate-300 text-right">
-                            1 = Nunca · 2 = A veces · 3 = Casi siempre · 4 = Siempre
+                <form id="selfEvalForm" class="space-y-6">
+                    <!-- DATOS -->
+                    <section class="space-y-3">
+                        <h3 class="text-sm md:text-base font-semibold text-cyan-300 uppercase tracking-[0.18em]">
+                            Datos del explorador
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-3 text-xs md:text-sm">
+                            <label class="flex flex-col gap-1">
+                                Nombre
+                                <input name="nombre" required
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+                            </label>
+                            <label class="flex flex-col gap-1">
+                                Equipo
+                                <input name="equipo"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+                            </label>
+                            <label class="flex flex-col gap-1">
+                                Fecha
+                                <input type="date" name="fecha"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+                            </label>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="space-y-3 text-xs md:text-sm">
-                        <!-- q1 -->
-                        <div class="space-y-1">
-                            <p>1. Me esforcé en todas las misiones y traté de hacer mi mejor trabajo.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q1" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q1" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q1" value="3" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>3</span><span>💪</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q1" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                    <!-- ESCALA A -->
+                    <section class="space-y-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
+                                A. Mi trabajo y mi aprendizaje
+                            </h3>
+                            <div class="text-[0.65rem] md:text-xs text-slate-300 text-right">
+                                1 = Nunca · 2 = A veces · 3 = Casi siempre · 4 = Siempre
                             </div>
                         </div>
 
-                        <!-- q2 -->
-                        <div class="space-y-1">
-                            <p>2. Entendí mejor cómo usar medidas, distancias y ángulos en los recorridos.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q2" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q2" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q2" value="3" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>3</span><span>💪</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q2" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- q3 -->
-                        <div class="space-y-1">
-                            <p>3. Pude programar mi RoverBot usando secuencias claras.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q3" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q3" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q3" value="3" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>3</span><span>💪</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q3" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- q4 -->
-                        <div class="space-y-1">
-                            <p>4. Intenté corregir mis errores cuando el robot no hacía lo esperado.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q4" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q4" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q4" value="3" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>3</span><span>💪</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q4" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- q5 -->
-                        <div class="space-y-1">
-                            <p>5. Aprendí algo nuevo sobre robótica o programación en cada misión.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q5" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q5" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q5" value="3" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>3</span><span>💪</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q5" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ESCALA B -->
-                <section class="space-y-4">
-                    <h2 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
-                        B. Mi trabajo en equipo
-                    </h2>
-                    <div class="space-y-3 text-xs md:text-sm">
-                        <!-- q6 -->
-                        <div class="space-y-1">
-                            <p>6. Respeté mi rol dentro del equipo (constructor/a, programador/a, documentador/a).</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q6" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q6" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q6" value="3" class="hidden">
+                        <div class="space-y-3 text-xs md:text-sm">
+                            <!-- q1 -->
+                            <div class="space-y-1">
+                                <p>1. Me esforcé en las misiones y traté de hacer mi mejor trabajo.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q1" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q1" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q1" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q6" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q1" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- q7 -->
-                        <div class="space-y-1">
-                            <p>7. Escuché las ideas de mis compañeros y aporté las mías.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q7" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q7" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q7" value="3" class="hidden">
+                            <!-- q2 -->
+                            <div class="space-y-1">
+                                <p>2. Entendí mejor cómo usar medidas, distancias y ángulos en los recorridos.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q2" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q2" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q2" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q7" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q2" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- q8 -->
-                        <div class="space-y-1">
-                            <p>8. Ayudé a resolver problemas sin discutir o imponer mis decisiones.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q8" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q8" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q8" value="3" class="hidden">
+                            <!-- q3 -->
+                            <div class="space-y-1">
+                                <p>3. Pude programar mi RoverBot usando secuencias claras.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q3" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q3" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q3" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q8" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q3" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- q9 -->
-                        <div class="space-y-1">
-                            <p>9. Compartí las tareas y dejé que los demás participaran.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q9" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q9" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q9" value="3" class="hidden">
+                            <!-- q4 -->
+                            <div class="space-y-1">
+                                <p>4. Intenté corregir mis errores cuando el robot no hacía lo esperado.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q4" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q4" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q4" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q9" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q4" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- ESCALA C -->
-                <section class="space-y-4">
-                    <h2 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
-                        C. Mi responsabilidad
-                    </h2>
-                    <div class="space-y-3 text-xs md:text-sm">
-                        <!-- q10 -->
-                        <div class="space-y-1">
-                            <p>10. Cuidé los materiales y el robot de mi equipo.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q10" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q10" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q10" value="3" class="hidden">
+                    <!-- ESCALA B -->
+                    <section class="space-y-4">
+                        <h3 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
+                            B. Mi trabajo en equipo
+                        </h3>
+                        <div class="space-y-3 text-xs md:text-sm">
+                            <!-- q5 -->
+                            <div class="space-y-1">
+                                <p>5. Respeté mi rol dentro del equipo (constructor/a, programador/a, documentador/a).</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q5" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q5" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q5" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q10" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q5" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- q11 -->
-                        <div class="space-y-1">
-                            <p>11. Subí mis trabajos y evidencias al portafolio digital cuando era necesario.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q11" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q11" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q11" value="3" class="hidden">
+                            <!-- q6 -->
+                            <div class="space-y-1">
+                                <p>6. Escuché las ideas de mis compañeros y aporté las mías.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q6" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q6" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q6" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q11" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q6" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- q12 -->
-                        <div class="space-y-1">
-                            <p>12. Seguí las instrucciones y cumplí con los tiempos.</p>
-                            <div class="flex gap-2">
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q12" value="1" class="hidden" required>
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>1</span><span>😴</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q12" value="2" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>2</span><span>🙂</span>
-                                    </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q12" value="3" class="hidden">
+                            <!-- q7 -->
+                            <div class="space-y-1">
+                                <p>7. Ayudé a resolver problemas sin discutir o imponer mis decisiones.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q7" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q7" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q7" value="3" class="hidden">
                                         <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
                                             <span>3</span><span>💪</span>
                                         </span>
-                                </label>
-                                <label class="scale-option flex-1">
-                                    <input type="radio" name="q12" value="4" class="hidden">
-                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
-                                        <span>4</span><span>🚀</span>
-                                    </span>
-                                </label>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q7" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- q8 -->
+                            <div class="space-y-1">
+                                <p>8. Compartí las tareas y dejé que los demás participaran.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q8" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q8" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q8" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q8" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- REFLEXIÓN -->
-                <section class="space-y-3">
-                    <h2 class="text-sm md:text-base font-semibold text-yellow-300 uppercase tracking-[0.18em]">
-                        D. Reflexión personal
-                    </h2>
-                    <div class="grid gap-3 text-xs md:text-sm">
-                        <label class="flex flex-col gap-1">
-                            13. Lo que más aprendí en este proyecto fue:
-                            <textarea name="r1" rows="2"
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
-                        </label>
-                        <label class="flex flex-col gap-1">
-                            14. Algo que todavía necesito practicar o mejorar:
-                            <textarea name="r2" rows="2"
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
-                        </label>
-                        <label class="flex flex-col gap-1">
-                            15. De todo lo que hice, me siento especialmente orgulloso/a de:
-                            <textarea name="r3" rows="2"
-                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
-                        </label>
-                    </div>
-                </section>
+                    <!-- ESCALA C -->
+                    <section class="space-y-4">
+                        <h3 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
+                            C. Mi responsabilidad
+                        </h3>
+                        <div class="space-y-3 text-xs md:text-sm">
+                            <!-- q9 -->
+                            <div class="space-y-1">
+                                <p>9. Cuidé los materiales y el robot de mi equipo.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q9" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q9" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q9" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q9" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
 
-                <!-- BOTONES -->
-                <section class="flex flex-col md:flex-row gap-3 md:justify-between md:items-center">
-                    <p id="status-msg" class="text-[0.7rem] md:text-xs text-slate-300">
-                        Completa la autoevaluación y pulsa “Guardar”.
-                    </p>
-                    <div class="flex flex-col md:flex-row gap-3 md:items-center">
+                            <!-- q10 -->
+                            <div class="space-y-1">
+                                <p>10. Subí mis trabajos y evidencias al portafolio digital cuando era necesario.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q10" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q10" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q10" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q10" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- q11 -->
+                            <div class="space-y-1">
+                                <p>11. Seguí las instrucciones y cumplí con los tiempos.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q11" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q11" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q11" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q11" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- q12 -->
+                            <div class="space-y-1">
+                                <p>12. Mantengo una actitud respetuosa durante las misiones.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q12" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q12" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q12" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="q12" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- REFLEXIÓN -->
+                    <section class="space-y-3">
+                        <h3 class="text-sm md:text-base font-semibold text-yellow-300 uppercase tracking-[0.18em]">
+                            D. Reflexión personal
+                        </h3>
+                        <div class="grid gap-3 text-xs md:text-sm">
+                            <label class="flex flex-col gap-1">
+                                13. Lo que más aprendí en este proyecto fue:
+                                <textarea name="r1" rows="2"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                            </label>
+                            <label class="flex flex-col gap-1">
+                                14. Algo que todavía necesito practicar o mejorar:
+                                <textarea name="r2" rows="2"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                            </label>
+                            <label class="flex flex-col gap-1">
+                                15. De todo lo que hice, me siento especialmente orgulloso/a de:
+                                <textarea name="r3" rows="2"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- BOTÓN AUTO -->
+                    <section class="flex flex-col md:flex-row gap-3 md:justify-between md:items-center">
+                        <p id="status-msg" class="text-[0.7rem] md:text-xs text-slate-300">
+                            Completa la autoevaluación y pulsa “Guardar”.
+                        </p>
                         <button type="submit"
                             class="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 text-slate-950 text-sm md:text-base font-bold shadow-lg hover:scale-105 transition">
                             💾 Guardar autoevaluación
                         </button>
-                        <a href="coevaluacion.html"
-                           class="px-6 py-2 rounded-full bg-slate-900/80 border border-emerald-300 text-emerald-100 text-xs md:text-sm font-semibold shadow hover:scale-105 transition text-center">
-                            ➡️ Siguiente: Coevaluación de equipo
-                        </a>
-                    </div>
-                </section>
-            </form>
+                    </section>
+                </form>
+            </section>
+
+            <!-- COEVALUACIÓN -->
+            <section id="co-eval" class="glass-card p-5 md:p-8 space-y-6">
+                <h2 class="title-font text-lg md:text-2xl text-emerald-300 text-center tracking-[0.18em]">
+                    Coevaluación del equipo
+                </h2>
+                <p class="text-[0.8rem] md:text-sm text-slate-200 text-center max-w-3xl mx-auto">
+                    Ahora piensa en cómo trabajó tu equipo en conjunto. Esta coevaluación no es para regañar, sino para
+                    ayudar a mejorar la forma de trabajar juntos en futuras misiones.
+                </p>
+
+                <form id="coEvalForm" class="space-y-6">
+                    <!-- DATOS EQUIPO -->
+                    <section class="space-y-3">
+                        <h3 class="text-sm md:text-base font-semibold text-cyan-300 uppercase tracking-[0.18em]">
+                            Datos del equipo
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-3 text-xs md:text-sm">
+                            <label class="flex flex-col gap-1 md:col-span-1">
+                                Equipo
+                                <input name="equipo"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                            </label>
+                            <label class="flex flex-col gap-1 md:col-span-2">
+                                Integrantes del equipo
+                                <input name="integrantes"
+                                    placeholder="Ej.: Ana, Mateo, Lucía"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                            </label>
+                            <label class="flex flex-col gap-1 md:col-span-1">
+                                Fecha
+                                <input type="date" name="fecha"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- ESCALA EQUIPO -->
+                    <section class="space-y-4">
+                        <h3 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
+                            Valoramos cómo trabajó nuestro equipo
+                        </h3>
+                        <div class="text-[0.65rem] md:text-xs text-slate-300">
+                            1 = Nunca · 2 = A veces · 3 = Casi siempre · 4 = Siempre
+                        </div>
+
+                        <div class="space-y-3 text-xs md:text-sm">
+                            <!-- ce1 -->
+                            <div class="space-y-1">
+                                <p>1. Nos escuchamos y respetamos las ideas de todas las personas del equipo.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce1" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce1" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce1" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce1" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ce2 -->
+                            <div class="space-y-1">
+                                <p>2. Repartimos las tareas (construir, programar, medir, registrar) de forma equilibrada.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce2" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce2" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce2" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce2" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ce3 -->
+                            <div class="space-y-1">
+                                <p>3. Cuando hubo errores, los resolvimos hablando y probando juntos nuevas ideas.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce3" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce3" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce3" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce3" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ce4 -->
+                            <div class="space-y-1">
+                                <p>4. Cuidamos juntos los materiales, el robot y el espacio de trabajo.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce4" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce4" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce4" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce4" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ce5 -->
+                            <div class="space-y-1">
+                                <p>5. Todos participamos en la presentación de nuestro trabajo final.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce5" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce5" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce5" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce5" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- ce6 -->
+                            <div class="space-y-1">
+                                <p>6. Nuestro equipo trabajó como un verdadero grupo de Exploradores de Zython.</p>
+                                <div class="flex gap-2">
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce6" value="1" class="hidden" required>
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>1</span><span>😴</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce6" value="2" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>2</span><span>🙂</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce6" value="3" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>3</span><span>💪</span>
+                                        </span>
+                                    </label>
+                                    <label class="scale-option flex-1">
+                                        <input type="radio" name="ce6" value="4" class="hidden">
+                                        <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                            <span>4</span><span>🚀</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- REFLEXIÓN EQUIPO -->
+                    <section class="space-y-3">
+                        <h3 class="text-sm md:text-base font-semibold text-yellow-300 uppercase tracking-[0.18em]">
+                            Reflexión del equipo
+                        </h3>
+                        <div class="grid gap-3 text-xs md:text-sm">
+                            <label class="flex flex-col gap-1">
+                                7. Lo que nuestro equipo hizo muy bien fue:
+                                <textarea name="er1" rows="2"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                            </label>
+                            <label class="flex flex-col gap-1">
+                                8. Algo que nuestro equipo podría mejorar en próximas misiones:
+                                <textarea name="er2" rows="2"
+                                    class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- BOTÓN COEVAL -->
+                    <section class="flex flex-col md:flex-row gap-3 md:justify-between md:items-center">
+                        <p id="status-msg-co" class="text-[0.7rem] md:text-xs text-slate-300">
+                            Completa la coevaluación del equipo y pulsa “Guardar”.
+                        </p>
+                        <button type="submit"
+                            class="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-400 text-slate-950 text-sm md:text-base font-bold shadow-lg hover:scale-105 transition">
+                            💾 Guardar coevaluación
+                        </button>
+                    </section>
+                </form>
+            </section>
         </main>
     </div>
 
     <script>
+        // FONDO ESTRELLAS
         function createStars() {
             const container = document.getElementById('stars');
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 140; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 const size = Math.random() * 2 + 1;
@@ -572,6 +839,7 @@
             }
         }
 
+        // DESTACAR OPCIONES SELECCIONADAS Y ACTUALIZAR PROGRESO
         document.addEventListener('click', (e) => {
             const label = e.target.closest('.scale-option');
             if (!label) return;
@@ -581,13 +849,14 @@
             group.forEach(r => r.nextElementSibling.classList.remove('ring-2', 'ring-cyan-400', 'bg-slate-800'));
             input.checked = true;
             label.querySelector('span').classList.add('ring-2', 'ring-cyan-400', 'bg-slate-800');
+
             updateProgress();
         });
 
         function updateProgress() {
-            const totalQuestions = 12; // q1–q12
+            const totalQuestions = 12; // q1–q12 de autoevaluación
             const answered = new Set(
-                Array.from(document.querySelectorAll('input[type="radio"]:checked')).map(i => i.name)
+                Array.from(document.querySelectorAll('input[name^="q"][type="radio"]:checked')).map(i => i.name)
             ).size;
             const percent = Math.round((answered / totalQuestions) * 100);
             const bar = document.getElementById('progress-bar');
@@ -596,12 +865,14 @@
             if (label) label.textContent = percent + '% completado';
         }
 
+        // GUARDAR AUTOEVALUACIÓN
         document.getElementById('selfEvalForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = e.target;
             const data = new FormData(form);
             const obj = {};
             for (const [k, v] of data.entries()) obj[k] = v;
+
             const scaleKeys = Object.keys(obj).filter(k => /^q\d+/.test(k));
             const values = scaleKeys.map(k => parseInt(obj[k], 10));
             const avg = values.length ? (values.reduce((a,b) => a+b, 0) / values.length).toFixed(2) : null;
@@ -619,6 +890,35 @@
             msg.textContent = avg
                 ? `✅ Autoevaluación guardada. Promedio de tu escala: ${avg}/4`
                 : '✅ Autoevaluación guardada.';
+            msg.classList.remove('text-slate-300');
+            msg.classList.add('text-emerald-300');
+        });
+
+        // GUARDAR COEVALUACIÓN
+        document.getElementById('coEvalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const obj = {};
+            for (const [k, v] of data.entries()) obj[k] = v;
+
+            const scaleKeys = Object.keys(obj).filter(k => /^ce\d+/.test(k));
+            const values = scaleKeys.map(k => parseInt(obj[k], 10));
+            const avg = values.length ? (values.reduce((a,b) => a+b, 0) / values.length).toFixed(2) : null;
+            obj.promedioEscalaEquipo = avg;
+
+            try {
+                const previous = JSON.parse(localStorage.getItem('zython-co-evals') || '[]');
+                previous.push(obj);
+                localStorage.setItem('zython-co-evals', JSON.stringify(previous));
+            } catch (err) {
+                console.error('Error guardando coevaluación', err);
+            }
+
+            const msg = document.getElementById('status-msg-co');
+            msg.textContent = avg
+                ? `✅ Coevaluación guardada. Promedio de la escala del equipo: ${avg}/4`
+                : '✅ Coevaluación guardada.';
             msg.classList.remove('text-slate-300');
             msg.classList.add('text-emerald-300');
         });
