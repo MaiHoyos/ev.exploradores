@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Coevaluación de Equipo – Exploradores de Zython</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Fredoka', system-ui, sans-serif;
+            background: radial-gradient(circle at top, #22c55e 0, #020617 45%, #000 100%);
+            min-height: 100vh;
+        }
+        .title-font {
+            font-family: 'Orbitron', system-ui, sans-serif;
+            letter-spacing: 0.16em;
+        }
+        .stars { position: fixed; inset: 0; pointer-events:none; z-index:0; }
+        .star {
+            position:absolute; background:white; border-radius:999px;
+            opacity:0.4; animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%,100%{opacity:0.2; transform:scale(1);}
+            50%{opacity:1; transform:scale(1.3);}
+        }
+        .glass-card {
+            background: rgba(15,23,42,0.9);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(74,222,128,0.7);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            backdrop-filter: blur(18px);
+        }
+        .scale-option {
+            transition: all 0.18s ease;
+        }
+        .scale-option input:checked + span {
+            transform: translateY(-1px) scale(1.05);
+            box-shadow: 0 0 0 2px rgba(74,222,128,0.9);
+        }
+    </style>
+</head>
+<body class="text-slate-50 relative overflow-x-hidden">
+    <div class="stars" id="stars"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 py-6 md:py-10 space-y-6">
+        <header class="glass-card p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+            <button onclick="volverAMisiones()"
+                class="px-4 py-2 rounded-full bg-slate-900/80 border border-emerald-300 text-emerald-200 text-xs md:text-sm font-semibold hover:scale-105 transition">
+                ← Volver a Misiones
+            </button>
+            <div class="flex-1 text-center">
+                <p class="title-font text-[0.65rem] md:text-xs text-emerald-200 tracking-[0.22em] uppercase">
+                    Exploradores del Espacio · Zython
+                </p>
+                <h1 class="title-font text-xl md:text-3xl text-emerald-300 mt-1">
+                    Coevaluación del Equipo
+                </h1>
+                <p class="text-[0.75rem] md:text-sm text-slate-300 mt-1">
+                    Evalúa cómo trabajó tu equipo durante las misiones.
+                </p>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-xs text-slate-300 mb-1">Progreso de reflexión</span>
+                <div class="w-28 bg-slate-800/80 rounded-full h-2 overflow-hidden">
+                    <div id="progress-bar" class="h-2 rounded-full bg-gradient-to-r from-emerald-300 to-cyan-300" style="width: 0%;"></div>
+                </div>
+                <span id="progress-label" class="text-[0.65rem] text-slate-400 mt-1">0% completado</span>
+            </div>
+        </header>
+
+        <main class="glass-card p-5 md:p-8 space-y-6">
+            <form id="teamEvalForm" class="space-y-6">
+                <!-- Datos -->
+                <section class="space-y-3">
+                    <h2 class="text-sm md:text-base font-semibold text-emerald-300 uppercase tracking-[0.18em]">
+                        Datos
+                    </h2>
+                    <div class="grid md:grid-cols-3 gap-3 text-xs md:text-sm">
+                        <label class="flex flex-col gap-1">
+                            Mi nombre
+                            <input name="nombre" required
+                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                        </label>
+                        <label class="flex flex-col gap-1">
+                            Equipo
+                            <input name="equipo"
+                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                        </label>
+                        <label class="flex flex-col gap-1">
+                            Fecha
+                            <input type="date" name="fecha"
+                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Escala -->
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-3">
+                        <h2 class="text-sm md:text-base font-semibold text-cyan-300 uppercase tracking-[0.18em]">
+                            A. Organización y roles
+                        </h2>
+                        <div class="text-[0.65rem] md:text-xs text-slate-300 text-right">
+                            1 = Nunca · 2 = A veces · 3 = Casi siempre · 4 = Siempre
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs md:text-sm">
+                        <!-- E1 -->
+                        <div class="space-y-1">
+                            <p>1. Todos asumimos nuestro rol y lo respetamos.</p>
+                            <div class="flex gap-2">
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e1" value="1" class="hidden" required>
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>1</span><span>😶</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e1" value="2" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>2</span><span>🙂</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e1" value="3" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>3</span><span>🤝</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e1" value="4" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>4</span><span>🌟</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- E2, E3 ... mismo patrón (puedes replicar) -->
+                        <div class="space-y-1">
+                            <p>2. Organizamos las tareas de forma clara antes de comenzar.</p>
+                            <div class="flex gap-2">
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e2" value="1" class="hidden" required>
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>1</span><span>😶</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e2" value="2" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>2</span><span>🙂</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e2" value="3" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>3</span><span>🤝</span>
+                                    </span>
+                                </label>
+                                <label class="scale-option flex-1">
+                                    <input type="radio" name="e2" value="4" class="hidden">
+                                    <span class="flex flex-col items-center justify-center px-2 py-2 rounded-2xl bg-slate-900/70 border border-slate-600 text-[0.7rem]">
+                                        <span>4</span><span>🌟</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Puedes añadir secciones B y C igual que en el instrumento en papel:
+                     B: Comunicación y colaboración (e4–e6)
+                     C: Trabajo en las misiones (e7–e9) -->
+
+                <!-- Reflexión equipo -->
+                <section class="space-y-3">
+                    <h2 class="text-sm md:text-base font-semibold text-yellow-300 uppercase tracking-[0.18em]">
+                        D. Reflexión del equipo
+                    </h2>
+                    <div class="grid gap-3 text-xs md:text-sm">
+                        <label class="flex flex-col gap-1">
+                            10. Algo que nuestro equipo hizo muy bien:
+                            <textarea name="re1" rows="2"
+                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                        </label>
+                        <label class="flex flex-col gap-1">
+                            11. Algo que podemos mejorar para próximas misiones:
+                            <textarea name="re2" rows="2"
+                                class="px-3 py-2 rounded-xl bg-slate-900/60 border border-slate-600/80 text-slate-100 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="flex flex-col md:flex-row gap-3 md:justify-between md:items-center">
+                    <p id="status-msg" class="text-[0.7rem] md:text-xs text-slate-300">
+                        Completa la coevaluación y pulsa “Guardar”.
+                    </p>
+                    <button type="submit"
+                        class="px-6 py-2 rounded-full bg-gradient-to-r from-emerald-300 via-cyan-300 to-sky-400 text-slate-950 text-sm md:text-base font-bold shadow-lg hover:scale-105 transition">
+                        💾 Guardar coevaluación
+                    </button>
+                </section>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            const label = e.target.closest('.scale-option');
+            if (!label) return;
+            const input = label.querySelector('input[type="radio"]');
+            const name = input.name;
+            const group = document.querySelectorAll('input[name="' + name + '"]');
+            group.forEach(r => r.nextElementSibling.classList.remove('ring-2', 'ring-emerald-300', 'bg-slate-800'));
+            input.checked = true;
+            label.querySelector('span').classList.add('ring-2', 'ring-emerald-300', 'bg-slate-800');
+            updateProgress();
+        });
+
+        function updateProgress() {
+            const total = document.querySelectorAll('input[type="radio"]').length / 4;
+            const answered = new Set(
+                Array.from(document.querySelectorAll('input[type="radio"]:checked')).map(i => i.name)
+            ).size;
+            const percent = Math.round((answered / total) * 100);
+            const bar = document.getElementById('progress-bar');
+            const label = document.getElementById('progress-label');
+            if (bar) bar.style.width = percent + '%';
+            if (label) label.textContent = percent + '% completado';
+        }
+
+        document.getElementById('teamEvalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const obj = {};
+            for (const [k,v] of data.entries()) obj[k] = v;
+            const scaleKeys = Object.keys(obj).filter(k => /^e\d+/.test(k));
+            const values = scaleKeys.map(k => parseInt(obj[k], 10));
+            const avg = values.length ? (values.reduce((a,b)=>a+b,0)/values.length).toFixed(2) : null;
+            obj.promedioEquipo = avg;
+
+            try {
+                const previous = JSON.parse(localStorage.getItem('zython-team-evals') || '[]');
+                previous.push(obj);
+                localStorage.setItem('zython-team-evals', JSON.stringify(previous));
+            } catch (err) {
+                console.error('Error guardando coevaluación', err);
+            }
+
+            const msg = document.getElementById('status-msg');
+            msg.textContent = avg
+                ? `✅ Coevaluación guardada. Promedio de tu equipo: ${avg}/4`
+                : '✅ Coevaluación guardada.';
+            msg.classList.remove('text-slate-300');
+            msg.classList.add('text-emerald-300');
+        });
+
+        function volverAMisiones() {
+            window.location.href = 'index.html';
+        }
+
+        createStars();
+        updateProgress();
+    </script>
+</body>
+</html>
